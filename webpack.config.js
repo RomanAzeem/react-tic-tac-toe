@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+// const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = function (_env, argv) {
@@ -13,8 +13,8 @@ module.exports = function (_env, argv) {
 
     return {
         devtool: isDevelopment && "cheap-module-source-map",
-        // entry: "./src/index.js",
-        entry: "./src/index.tsx",
+        entry: "./src/index.js",
+        // entry: "./src/index.tsx",
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "assets/js/[name].[contenthash:8].js",
@@ -119,9 +119,9 @@ module.exports = function (_env, argv) {
                 template: path.resolve(__dirname, "public/index.html"),
                 inject: true
             }),
-            new ForkTsCheckerWebpackPlugin({
-                async: false
-            }),
+            // new ForkTsCheckerWebpackPlugin({
+            //     async: false
+            // }),
             new WorkboxPlugin.GenerateSW({
                 swDest: "service-worker.js",
                 clientsClaim: true,
